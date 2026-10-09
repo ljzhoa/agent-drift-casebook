@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="An interactive evidence casebook of agent drift: repeated attempts, stale environment assumptions, hallucinations, premature completion, and lost task constraints.">
+  <meta name="theme-color" content="#152331">
+  <title>Agent Drift — An Evidence Casebook</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23152331'/%3E%3Cpath d='M8 25V7M8 17L23 7' stroke='%23ffffff' stroke-width='3' fill='none'/%3E%3Ccircle cx='23' cy='7' r='4' fill='%23ff765c'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+  <script src="cases.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#case-content">Skip to case</a>
+  <aside class="sidebar" id="sidebar" aria-label="Case navigation">
+    <a class="brand" href="#loop-html"><span class="brand-mark" aria-hidden="true"><svg width="28" height="34" viewBox="0 0 28 34"><path d="M5 29V5M5 20L22 7" stroke="#fff" stroke-width="2" fill="none"/><circle cx="22" cy="7" r="4" fill="#ff8b71"/></svg></span><span>AGENT DRIFT<small>An evidence casebook</small></span></a>
+    <div class="sidebar-intro"><span class="eyebrow">TERMINAL-BENCH</span><p>Five patterns.<br>Follow the evidence.</p></div>
+    <nav id="case-navigation" aria-label="Drift categories and cases"></nav>
+    <div class="sidebar-footer"><span>10 case walkthroughs · 9 traces</span><button class="text-button" id="method-button">How to read the evidence</button><span class="edition">Research collection · 09 OCT 2026</span></div>
+  </aside>
+  <div class="workspace">
+    <header class="topbar"><div class="topbar-left"><button id="menu-button" class="icon-button" aria-label="Open case navigation" aria-expanded="false">☰</button><span class="collection-label">RESEARCH / CASE STUDIES</span><span id="breadcrumb"></span></div><button id="presentation-button" class="button button-quiet" aria-pressed="false"><span aria-hidden="true">▣</span> Presentation mode</button></header>
+    <main id="case-content" tabindex="-1"><div id="case-view"></div><noscript>This casebook needs JavaScript to show the interactive walkthroughs. The original evidence files remain available in the evidence folder.</noscript></main>
+    <footer class="page-footer"><span>Original observations. Explicit interpretations. Traceable claims.</span><span>Selected raw traces · October 2026</span></footer>
+  </div>
+  <dialog id="evidence-dialog" aria-labelledby="evidence-title"><header class="dialog-header"><div><span class="eyebrow">SOURCE EVIDENCE</span><h2 id="evidence-title">Source excerpt</h2></div><button class="icon-button dialog-close" aria-label="Close source evidence">×</button></header><div id="evidence-body"></div></dialog>
+  <dialog id="method-dialog" aria-labelledby="method-title"><header class="dialog-header"><div><span class="eyebrow">READING GUIDE</span><h2 id="method-title">Evidence before interpretation.</h2></div><button class="icon-button dialog-close" aria-label="Close reading guide">×</button></header><div class="method-body">
+    <p>This casebook follows the five categories assigned to the selected traces. Each walkthrough reconstructs a local sequence of observations, stated judgments, actions, and consequences.</p>
+    <div class="method-grid"><section><h3>Original evidence</h3><p>Quoted task text, agent messages, tool output, or verifier results. Click a reference to inspect its location and surrounding source lines. JSON excerpts are decoded for readability.</p></section><section><h3>Analytical interpretation</h3><p>Our explanation of why a transition matters. These annotations are separate from the original log and do not claim access to unrecorded model reasoning.</p></section><section><h3>Marked drift point</h3><p>The earliest well-supported transition selected for this case. A temporary workaround or a single failed attempt is not, by itself, evidence of drift.</p></section><section><h3>Recorded outcome</h3><p>A failed result documents task performance. It does not establish that one highlighted behavior was the sole cause. Successful runs are illustrative comparisons, not controlled experiments.</p></section></div>
+    <h3>Use it in a discussion</h3><p>Keep the original objective visible. Advance one step at a time, inspect the evidence, then reveal the later result. Use <kbd>←</kbd> and <kbd>→</kbd> in a walkthrough. Presentation mode keeps the current case and enlarges the reading surface; <kbd>Esc</kbd> exits.</p>
+    <h3>Scope and counting</h3><p>The source package contains 23 traces. These 10 walkthroughs focus on 9 selected traces; group 044, trace 001 appears under two categories because it contains two distinct transitions. The remaining runs supply context or comparisons. Repeated rows in exported tool tables can represent components of one command and are not counted as independent attempts.</p>
+    <h3>Terminology</h3><p>“Loop / repeated attempts” describes recurrence in a finite record. “Environment not updated” concerns failure to revise the working plan after new environment feedback. “LLM hallucination” covers unsupported assumptions or causal claims. “Forgetting constraints” is used as a category label; the evidence demonstrates a constraint being lost in implementation, not a directly observed mental state.</p>
+  </div></dialog>
+  <div class="sr-only" id="announcer" aria-live="polite"></div>
+</body>
+</html>
